@@ -1,0 +1,11 @@
+body {
+    margin: 0 auto;
+    width: 50%;
+    color: #2962FF;
+}
+
+.item {
+    background: #F5DEB3;
+    margin: 0 auto;
+    width: 90%
+}

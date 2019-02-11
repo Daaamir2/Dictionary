@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head data-th-replace="fragments/layout :: headFragment(title='${dictionary.name}')"></head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <h1>All Dictionaries</h1>
+            <ul class="collection">
+                <li class="collection-item" data-th-each="dictionary : ${dictionaries}">
+                    <a data-th-href="@{/dictionaries/{id} (id = ${dictionary.id})}">
+                        <span data-th-text="${dictionary.name}"></span>
+                    </a>
+                </li>
+            </ul>
+            <p data-th-if="${dictionaries.size() == 0}" class="no-items">No products to display</p>
+
+            <!--<a data-th-href="@{/dictionaries/add}" class="waves-effect waves-light btn">Add Dictionary</a>-->
+            <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head data-th-replace="fragments/layout :: headFragment(title='All Dictionaries')"></head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <h1>All Dictionaries</h1>
+            <ul class="collection">
+                <li class="collection-item" data-th-each="dictionary : ${dictionaries}">
+                    <a data-th-href="@{/dictionary/{id} (id = ${dictionary.id})}">
+                        <span data-th-text="${dictionary.name}"></span>
+                    </a>
+                </li>
+            </ul>
+            <p data-th-if="${dictionaries.size() == 0}" class="no-items">No products to display</p>
+
+            <form data-th-action="@{/}" method="post">
+                <a class="waves-effect waves-light btn modal-trigger" href="#addDictionary">Add Dictionary</a>
+
+                <div id="addDictionary" class="modal">
+                    <div class="modal-content">
+                        <h4>Do you want add dictionary?</h4>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input id="name" type="text" name="name" class="validate">
+                                <label for="name">Dictionary Name</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="/" class="modal-close waves-effect waves-green btn-flat">Disagree</a>
+                        <a href="/dictionary" class="modal-close waves-effect waves-green btn-flat" type="submit">Agree</a>
+                    </div>
+                </div>
+            </form>
+
+            <!--<a data-th-href="@{/dictionaries/add}" class="waves-effect waves-light btn">Add Dictionary</a>-->
+            <!--<a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>-->
+        </div>
+    </div>
+</div>
+<div data-th-replace="fragments/layout :: scriptsFragment"></div>
+<script>
+    $(document).ready(function () {
+        $('.modal').modal();
+    })
+</script>
+
+
+</body>
+</html>
