@@ -18,6 +18,8 @@ public class DictionaryApplication {
         var repository = context.getBean(DictionaryRepository.class);
         var repository2 = context.getBean(WordRepository.class);
         List<WordEntity> word = repository2.saveAll(List.of(
+                new WordEntity(0, "1", "2", "3", "4", "5"),
+                new WordEntity(0, "1", "2", "3", "4", "5"),
                 new WordEntity(0, "1", "2", "3", "4", "5")
         ));
 

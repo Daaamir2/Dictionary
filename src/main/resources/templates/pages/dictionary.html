@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head data-th-replace="fragments/layout :: headFragment(title='${dictionary.name}')"></head>
+<head data-th-replace="fragments/layout :: headFragment(title=${dictionary.name})"></head>
 <body>
 <div class="container">
     <div class="row">
@@ -10,9 +10,9 @@
                 <table>
                     <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Item Name</th>
-                        <th>Item Price</th>
+                        <th>Word</th>
+                        <th>Transcription</th>
+                        <th>Translation</th>
                     </tr>
                     </thead>
 
@@ -25,6 +25,7 @@
                     </tbody>
                 </table>
             </div>
+        </div>
     </div>
 </div>
 </body>

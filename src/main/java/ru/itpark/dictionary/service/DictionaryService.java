@@ -25,6 +25,13 @@ public class DictionaryService {
                 .orElseThrow(DictionaryNotFoundException::new);
     }
 
+    public List<WordEntity> findWords(int id){
+        return repository.findById(id)
+                .orElseThrow(DictionaryNotFoundException::new)
+                .getWord();
+    }
+
+
     public void removeById(int id){
         repository.deleteById(id);
     }

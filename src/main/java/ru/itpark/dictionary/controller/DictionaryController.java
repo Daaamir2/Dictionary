@@ -33,7 +33,7 @@ public class DictionaryController {
     @GetMapping("/dictionary/{id}")
     public String dictionary(@PathVariable int id, Model model){
         model.addAttribute("dictionary", dictionaryService.findById(id));
-        model.addAttribute("words", dictionaryService.findById(id).getWord());
+        model.addAttribute("words", dictionaryService.findWords(id));
         return "pages/dictionary";
     }
 }
