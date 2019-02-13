@@ -27,7 +27,7 @@ public class DictionaryController {
     @PostMapping
     public String add(@ModelAttribute DictionaryEntity dictionary) {
         dictionaryService.save(dictionary);
-        return "pages/dictionary";
+        return "redirect:/";
     }
 
     @GetMapping("/dictionary/{id}")

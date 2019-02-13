@@ -15,7 +15,7 @@
             </ul>
             <p data-th-if="${dictionaries.size() == 0}" class="no-items">No products to display</p>
 
-            <form data-th-action="@{/}" method="post">
+            <form  method="post">
                 <a class="waves-effect waves-light btn modal-trigger" href="#addDictionary">Add Dictionary</a>
 
                 <div id="addDictionary" class="modal">
@@ -23,14 +23,14 @@
                         <h4>Do you want add dictionary?</h4>
                         <div class="row">
                             <div class="input-field col s6">
-                                <input id="name" type="text" name="name" class="validate">
+                                <input id="name" name="name" type="text" class="validate" required>
                                 <label for="name">Dictionary Name</label>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a href="/" class="modal-close waves-effect waves-green btn-flat">Disagree</a>
-                        <a href="/dictionary" class="modal-close waves-effect waves-green btn-flat" type="submit">Agree</a>
+                        <a href="/" class="modal-close waves-effect waves-red btn-flat">Disagree</a>
+                        <button class="modal-close waves-effect waves-green btn-flat" type="submit">Agree</button>
                     </div>
                 </div>
             </form>
@@ -43,7 +43,9 @@
 <div data-th-replace="fragments/layout :: scriptsFragment"></div>
 <script>
     $(document).ready(function () {
-        $('.modal').modal();
+        $('.modal').modal({
+            outDuration: 500
+        });
     })
 </script>
 

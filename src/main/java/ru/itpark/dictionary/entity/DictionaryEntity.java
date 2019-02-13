@@ -15,8 +15,8 @@ public class DictionaryEntity {
     @Id
     @GeneratedValue
     private int id;
-    @Column(name = "Dictionary")
-    private String name;
+    @Column(name = "Dictionary", nullable = false)
+    private String name = "Dictionary";
     @OneToMany(fetch = FetchType.EAGER)
     private List<WordEntity> word;
 }
