@@ -17,6 +17,6 @@ public class DictionaryEntity {
     private int id;
     @Column(name = "Dictionary", nullable = false)
     private String name = "Dictionary";
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<WordEntity> word;
 }

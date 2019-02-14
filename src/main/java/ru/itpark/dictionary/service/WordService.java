@@ -1,6 +1,5 @@
 package ru.itpark.dictionary.service;
 
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ru.itpark.dictionary.entity.WordEntity;
 import ru.itpark.dictionary.exception.WordNotFoundException;
@@ -11,9 +10,11 @@ import java.util.List;
 @Service
 public class WordService {
     private final WordRepository repository;
+    private final DictionaryService service;
 
-    public WordService(WordRepository repository) {
+    public WordService(WordRepository repository, DictionaryService service) {
         this.repository = repository;
+        this.service = service;
     }
 
     public List<WordEntity> findAll (){
@@ -37,5 +38,6 @@ public class WordService {
         repository.save(entity);
 
     }
+
 
 }

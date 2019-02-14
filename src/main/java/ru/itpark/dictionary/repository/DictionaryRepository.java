@@ -5,4 +5,5 @@ import ru.itpark.dictionary.entity.DictionaryEntity;
 
 public interface DictionaryRepository extends JpaRepository <DictionaryEntity, Integer> {
 
+
 }

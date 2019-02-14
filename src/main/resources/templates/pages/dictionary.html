@@ -18,15 +18,57 @@
 
                     <tbody data-th-each="word : ${words}">
                     <tr>
-                        <td>[[${word.word}]]</td>
+                        <td><a href="#addWord">
+                            <span data-th-text="${word.word}"></span>
+                        </a></td>
                         <td>[[${word.transcription}]]</td>
                         <td>[[${word.translation}]]</td>
                     </tr>
                     </tbody>
+                    <form  method="post">
+                        <button class="modal-close waves-effect waves-green btn-flat" type="submit">add</button>
+                    </form>
                 </table>
+
+                <form  method="post">
+                    <a class="waves-effect waves-light btn modal-trigger" href="#addWord">Add Word</a>
+
+                    <div id="addWord" class="modal">
+                        <div class="modal-content">
+                            <h4>Do you want add word?</h4>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input id="word" name="word" type="text" class="validate" required>
+                                    <label for="word">Word</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="transcription" name="transcription" type="text">
+                                    <label for="transcription">Transcription</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="translation" name="translation" type="text" class="validate" required>
+                                    <label for="translation">Translation</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="/" class="modal-close waves-effect waves-red btn-flat">Disagree</a>
+                            <button class="modal-close waves-effect waves-green btn-flat" type="submit">Agree</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
+<div data-th-replace="fragments/layout :: scriptsFragment"></div>
+<script>
+    $(document).ready(function () {
+        $('.modal').modal({
+            outDuration: 500
+        });
+    })
+</script>
+
 </body>
 </html>

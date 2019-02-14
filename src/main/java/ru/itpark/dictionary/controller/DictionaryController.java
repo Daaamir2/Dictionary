@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.itpark.dictionary.entity.DictionaryEntity;
+import ru.itpark.dictionary.entity.WordEntity;
 import ru.itpark.dictionary.service.DictionaryService;
 import ru.itpark.dictionary.service.WordService;
 
@@ -33,8 +34,21 @@ public class DictionaryController {
     @GetMapping("/dictionary/{id}")
     public String dictionary(@PathVariable int id, Model model){
         model.addAttribute("dictionary", dictionaryService.findById(id));
-        model.addAttribute("words", dictionaryService.findWords(id));
+        model.addAttribute("words", dictionaryService.findAllWordsInDictionary(id));
         return "pages/dictionary";
+    }
+
+    @PostMapping("/dictionary/{id}")
+    public String add(@PathVariable int id, @ModelAttribute WordEntity word) {
+        dictionaryService.addWord(word, id);
+
+        return "redirect:/dictionary/{id}";
+    }
+
+    @GetMapping("/word")
+    public String word(Model model){
+        model.addAttribute("words", wordService.findAll());
+        return "pages/word";
     }
 }
 
