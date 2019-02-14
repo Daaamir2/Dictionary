@@ -19,7 +19,7 @@
                     <tbody data-th-each="word : ${words}">
                     <tr>
                         <td>
-                            <form method="post" id="${word.id}" data-th-object="${word.id}">
+                            <form method="post">
                                 <a class="modal-trigger" href="#editWord">
                                     <span data-th-text="${word.word}"></span>
                                 </a>
