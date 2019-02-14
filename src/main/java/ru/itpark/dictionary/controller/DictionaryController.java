@@ -26,7 +26,7 @@ public class DictionaryController {
     }
 
     @PostMapping
-    public String add(@ModelAttribute DictionaryEntity dictionary) {
+    public String addDictionary(@ModelAttribute DictionaryEntity dictionary) {
         dictionaryService.save(dictionary);
         return "redirect:/";
     }
@@ -34,16 +34,25 @@ public class DictionaryController {
     @GetMapping("/dictionary/{id}")
     public String dictionary(@PathVariable int id, Model model){
         model.addAttribute("dictionary", dictionaryService.findById(id));
-        model.addAttribute("words", dictionaryService.findAllWordsInDictionary(id));
+        model.addAttribute("words", dictionaryService.findById(id).getWord());
         return "pages/dictionary";
     }
 
     @PostMapping("/dictionary/{id}")
-    public String add(@PathVariable int id, @ModelAttribute WordEntity word) {
+    public String addWord(@PathVariable int id, @ModelAttribute WordEntity word) {
         dictionaryService.addWord(word, id);
-
         return "redirect:/dictionary/{id}";
     }
+
+    @PostMapping("/dictionary/{id}")
+    public String editWord(@PathVariable int id, @ModelAttribute WordEntity word, int idWord) {
+        wordService.edit(word, idWord);
+        return "redirect:/dictionary/{id}";
+    }
+
+
+
+
 
     @GetMapping("/word")
     public String word(Model model){

@@ -28,13 +28,6 @@ public class DictionaryService {
                 .orElseThrow(DictionaryNotFoundException::new);
     }
 
-    public List<WordEntity> findAllWordsInDictionary(int id) {
-        return repository.findById(id)
-                .orElseThrow(DictionaryNotFoundException::new)
-                .getWord();
-    }
-
-
     public void removeById(int id) {
         repository.deleteById(id);
     }
@@ -43,14 +36,12 @@ public class DictionaryService {
         repository.save(dictionary);
     }
 
-    public void addWord(WordEntity word,int id) {
+    public void addWord(WordEntity word, int id) {
         word.setDictionaryEntity(repository.findById(id)
                 .orElseThrow(DictionaryNotFoundException::new));
         wordRepository.save(word);
 
-        List<WordEntity> list = repository.findById(id)
-                .orElseThrow(DictionaryNotFoundException::new)
-                .getWord();
+        List<WordEntity> list = this.findById(id).getWord();
         list.add(word);
         repository.save(word.getDictionaryEntity());
     }

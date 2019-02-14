@@ -36,7 +36,17 @@ public class WordService {
 
     public void save(WordEntity entity){
         repository.save(entity);
+    }
 
+    public void edit(WordEntity word, int id){
+        WordEntity entity = repository
+                .findById(id)
+                .orElseThrow();
+        entity.setDictionaryEntity(word.getDictionaryEntity());
+        entity.setWord(word.getWord());
+        entity.setTranscription(word.getTranscription());
+        entity.setTranscription(word.getTranscription());
+        repository.save(entity);
     }
 
 
