@@ -48,6 +48,4 @@ public class WordService {
         entity.setTranscription(word.getTranscription());
         repository.save(entity);
     }
-
-
 }

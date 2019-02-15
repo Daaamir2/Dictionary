@@ -2,6 +2,7 @@
 <html lang="en">
 <head data-th-replace="fragments/layout :: headFragment(title=${dictionary.name})"></head>
 <body>
+<div data-th-replace="fragments/layout :: navBar"></div>
 <div class="container">
     <div class="row">
         <div class="col s12">
@@ -19,37 +20,9 @@
                     <tbody data-th-each="word : ${words}">
                     <tr>
                         <td>
-                            <form method="post">
-                                <a class="modal-trigger" href="#editWord">
-                                    <span data-th-text="${word.word}"></span>
-                                </a>
-                                <div id="editWord" class="modal">
-                                    <div class="modal-content">
-                                        <h4>Do you want edit word?</h4>
-                                        <div class="row">
-                                            <div class="input-field col s6">
-                                                <input data-th-value="${word.word}" id="word" name="word" type="text" class="validate" required>
-                                                <label for="word">Word</label>
-                                            </div>
-                                            <div class="input-field col s6">
-                                                <input data-th-value="${word.transcription}" id="transcription" name="transcription" type="text">
-                                                <label for="transcription">Transcription</label>
-                                            </div>
-                                            <div class="input-field col s6">
-                                                <input data-th-value="${word.translation}" id="translation" name="translation" type="text"
-                                                       class="validate" required>
-                                                <label for="translation">Translation</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a href="#!" class="modal-close waves-effect waves-red btn-flat">Disagree</a>
-                                        <button class="modal-close waves-effect waves-green btn-flat" type="submit">
-                                            Agree
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
+                            <a data-th-href="@{/word/{idWord} (idWord = ${word.id})}">
+                                <span data-th-text="${word.word}"></span>
+                            </a>
                         </td>
                         <td>[[${word.transcription}]]</td>
                         <td>[[${word.translation}]]</td>
@@ -92,12 +65,6 @@
 <div data-th-replace="fragments/layout :: scriptsFragment"></div>
 <script>
     $(document).ready(function () {
-        // $('#editWord').modal({
-        //     outDuration: 500
-        // });
-        // $('#addWord').modal({
-        //     outDuration: 500
-        // });
         $('.modal').modal();
     })
 

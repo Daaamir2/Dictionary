@@ -2,26 +2,52 @@
 <html lang="en">
 <head data-th-replace="fragments/layout :: headFragment(title='')"></head>
 <body>
+<div data-th-replace="fragments/layout :: navBar"></div>
 <div class="container">
     <div class="row">
         <div class="col s12">
-            <table>
-                <thead>
-                <tr>
-                    <th>Word</th>
-                    <th>Transcription</th>
-                    <th>Translation</th>
-                </tr>
-                </thead>
+            <h1>Word Editing</h1>
+            <form data-th-action="@{/word/{idWord} (idWord = ${word.id})}" method="post">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Word</th>
+                        <th>Transcription</th>
+                        <th>Translation</th>
+                    </tr>
+                    </thead>
 
-                <tbody data-th-each="word : ${words}">
-                <tr>
-                    <td>[[${word.word}]]</td>
-                    <td>[[${word.transcription}]]</td>
-                    <td>[[${word.translation}]]</td>
-                </tr>
-                </tbody>
-            </table>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div class="input-field col s6">
+                                <input data-th-value="${word.word}" id="word" name="word" type="text" class="validate"
+                                       required>
+                                <label for="word"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="input-field col s6">
+                                <input data-th-value="${word.transcription}" id="transcription" name="transcription"
+                                       type="text">
+                                <label for="transcription"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="input-field col s6">
+                                <input data-th-value="${word.translation}" id="translation" name="translation"
+                                       type="text"
+                                       class="validate" required>
+                                <label for="translation"></label>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <button class="waves-effect waves-light btn" type="submit">Edit</button>
+            </form>
+            <a class="waves-effect waves-light btn"
+               data-th-href="@{/word/{idWord}/remove (idWord = ${word.id})}">Remove</a>
         </div>
     </div>
 </div>

@@ -32,7 +32,7 @@ public class DictionaryController {
     }
 
     @GetMapping("/dictionary/{id}")
-    public String dictionary(@PathVariable int id, Model model){
+    public String dictionary(@PathVariable int id, Model model) {
         model.addAttribute("dictionary", dictionaryService.findById(id));
         model.addAttribute("words", dictionaryService.findById(id).getWord());
         return "pages/dictionary";
@@ -44,20 +44,43 @@ public class DictionaryController {
         return "redirect:/dictionary/{id}";
     }
 
-    @PostMapping("/dictionary/{id}")
-    public String editWord(@PathVariable int id, @ModelAttribute WordEntity word, int idWord) {
-        wordService.edit(word, idWord);
-        return "redirect:/dictionary/{id}";
+    @GetMapping(value = "/search", params = "name")
+    public String search(@RequestParam String name, Model model) {
+        model.addAttribute("name", name);
+        model.addAttribute("dictionaries", dictionaryService.findAllByName(name));
+        return "allDictionaries";
     }
 
-
-
-
-
-    @GetMapping("/word")
-    public String word(Model model){
-        model.addAttribute("words", wordService.findAll());
+    @GetMapping("/word/{idWord}")
+    public String word(@PathVariable int idWord, Model model) {
+        model.addAttribute("word", wordService.findById(idWord));
         return "pages/word";
     }
+
+    @PostMapping("/word/{idWord}")
+    public String editWord(@PathVariable int idWord, @ModelAttribute WordEntity wordEntity) {
+        int id = wordService.findById(idWord).getDictionaryEntity().getId();
+        dictionaryService.editWord(wordEntity,idWord);
+        return "redirect:/dictionary/" + id;
+    }
+
+    @GetMapping("/word/{idWord}/remove")
+    public String remove(@PathVariable int idWord, Model model) {
+        model.addAttribute("word", wordService.findById(idWord));
+        return "pages/remove";
+    }
+
+    @PostMapping("/word/{idWord}/remove")
+    public String remove(@PathVariable int idWord) {
+        int id = wordService.findById(idWord).getDictionaryEntity().getId();
+        dictionaryService.removeWord(idWord);
+        return "redirect:/dictionary/" + id;
+    }
+
+//    @GetMapping("/word")
+//    public String word(Model model){
+//        model.addAttribute("words", wordService.findAll());
+//        return "pages/word";
+//    }
 }
 

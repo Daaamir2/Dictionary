@@ -15,6 +15,14 @@
 
 </head>
 <body>
+<nav data-th-fragment="navBar">
+    <div class="nav-wrapper grey">
+        <a href="#" class="brand-logo">Dictionary</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a data-th-href="@{/}">All Dictionaries</a></li>
+        </ul>
+    </div>
+</nav>
 <div data-th-fragment="scriptsFragment">
     <script type="text/javascript" data-th-src="@{https://code.jquery.com/jquery-3.2.1.min.js}"></script>
     <script type="text/javascript" data-th-src="@{/js/materialize.min.js}" src="js/materialize.min.js"></script>
