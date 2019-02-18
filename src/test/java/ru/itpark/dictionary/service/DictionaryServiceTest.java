@@ -27,6 +27,5 @@ class DictionaryServiceTest {
         var dummy = new DictionaryEntity(1, "", null);
         doReturn(Optional.of(dummy)).when(repository).findById(1);
         assertEquals(dummy, service.findById(1));
-
     }
 }
