@@ -55,6 +55,7 @@ public class DictionaryController {
     public String searchWord(@RequestParam String word, Model model) {
         model.addAttribute("name", word);
         model.addAttribute("words", dictionaryService.findWord(word));
+
         return "pages/dictionary";
     }
 
