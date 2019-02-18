@@ -54,30 +54,30 @@ public class DictionaryApplicationTests {
         webDriver.findElement(By.className("no-items"));
     }
 
-    @Test
-    @DirtiesContext
-    public void searchByName() {
-        repository.saveAll(List.of(
-                new DictionaryEntity(0, "Первый", Collections.emptyList()),
-                new DictionaryEntity(0, "Второй", Collections.emptyList())
-        ));
-
-        webDriver.get("http://localhost:" + port);
-        WebElement search = webDriver.findElement(By.className("validate"));
-        search.sendKeys("Первый");
-        search.sendKeys(Keys.ENTER);
-
-        var wait = new WebDriverWait(webDriver,5);
-
-        wait.until(ExpectedConditions.numberOfElementsToBe(
-                By.className("collection-item"),
-                1
-        ));
-
-        assertTrue(webDriver.findElement(By.className("collection-item"))
-        .getText().toLowerCase()
-        .contains("первый"));
-    }
+//    @Test
+//    @DirtiesContext
+//    public void searchByName() {
+//        repository.saveAll(List.of(
+//                new DictionaryEntity(0, "Первый", Collections.emptyList()),
+//                new DictionaryEntity(0, "Второй", Collections.emptyList())
+//        ));
+//
+//        webDriver.get("http://localhost:" + port);
+//        WebElement search = webDriver.findElement(By.className("validate"));
+//        search.sendKeys("Первый");
+//        search.sendKeys(Keys.ENTER);
+//
+//        var wait = new WebDriverWait(webDriver,5);
+//
+//        wait.until(ExpectedConditions.numberOfElementsToBe(
+//                By.className("collection-item"),
+//                1
+//        ));
+//
+//        assertTrue(webDriver.findElement(By.className("collection-item"))
+//        .getText().toLowerCase()
+//        .contains("первый"));
+//    }
 
 //    @Test
 //    @DirtiesContext
