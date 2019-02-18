@@ -29,30 +29,30 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class DictionaryApplicationTests {
 
-    private static WebDriver webDriver;
-
-    @LocalServerPort
-    private int port;
-
-    @Autowired
-    private DictionaryRepository repository;
-
-    @BeforeAll
-    public static void beforeAll() {
-        WebDriverManager.chromedriver().setup();
-
-        ChromeOptions options = new ChromeOptions();
-        options.setHeadless(true);
-
-        webDriver = new ChromeDriver(options);
-    }
-
-    @Test
-    public void displayMainPage() {
-        webDriver.get("http://localhost:" + port);
-
-        webDriver.findElement(By.className("no-items"));
-    }
+//    private static WebDriver webDriver;
+//
+//    @LocalServerPort
+//    private int port;
+//
+//    @Autowired
+//    private DictionaryRepository repository;
+//
+//    @BeforeAll
+//    public static void beforeAll() {
+//        WebDriverManager.chromedriver().setup();
+//
+//        ChromeOptions options = new ChromeOptions();
+//        options.setHeadless(true);
+//
+//        webDriver = new ChromeDriver(options);
+//    }
+//
+//    @Test
+//    public void displayMainPage() {
+//        webDriver.get("http://localhost:" + port);
+//
+//        webDriver.findElement(By.className("no-items"));
+//    }
 
 //    @Test
 //    @DirtiesContext
