@@ -29,14 +29,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class DictionaryApplicationTests {
 
-    private static WebDriver webDriver;
-
-    @LocalServerPort
-    private int port;
-
-    @Autowired
-    private DictionaryRepository repository;
-
+//    private static WebDriver webDriver;
+//
+//    @LocalServerPort
+//    private int port;
+//
+//    @Autowired
+//    private DictionaryRepository repository;
+//
 //    @BeforeAll
 //    public static void beforeAll() {
 //        WebDriverManager.firefoxdriver().setup();
@@ -46,62 +46,62 @@ public class DictionaryApplicationTests {
 //
 //        webDriver = new FirefoxDriver(options);
 //    }
-
-    @Test
-    public void displayMainPage() {
-        webDriver.get("http://localhost:" + port);
-
-        webDriver.findElement(By.className("no-items"));
-    }
-
-    @Test
-    @DirtiesContext
-    public void searchByName() {
-        repository.saveAll(List.of(
-                new DictionaryEntity(0, "Первый", Collections.emptyList()),
-                new DictionaryEntity(0, "Второй", Collections.emptyList())
-        ));
-
-        webDriver.get("http://localhost:" + port);
-        WebElement search = webDriver.findElement(By.className("validate"));
-        search.sendKeys("Первый");
-        search.sendKeys(Keys.ENTER);
-
-        var wait = new WebDriverWait(webDriver,5);
-
-        wait.until(ExpectedConditions.numberOfElementsToBe(
-                By.className("collection-item"),
-                1
-        ));
-
-        assertTrue(webDriver.findElement(By.className("collection-item"))
-        .getText().toLowerCase()
-        .contains("первый"));
-    }
-
-    @Test
-    @DirtiesContext
-    public void searchByNameWithLowerCase() {
-        repository.saveAll(List.of(
-                new DictionaryEntity(0, "Первый", Collections.emptyList()),
-                new DictionaryEntity(0, "Второй", Collections.emptyList())
-        ));
-
-        webDriver.get("http://localhost:" + port);
-        WebElement search = webDriver.findElement(By.className("validate"));
-        search.sendKeys("первый");
-        search.sendKeys(Keys.ENTER);
-
-        var wait = new WebDriverWait(webDriver,5);
-
-        wait.until(ExpectedConditions.numberOfElementsToBe(
-                By.className("collection-item"),
-                1
-        ));
-
-        assertTrue(webDriver.findElement(By.className("collection-item"))
-                .getText().toLowerCase()
-                .contains("первый"));
-    }
+//
+//    @Test
+//    public void displayMainPage() {
+//        webDriver.get("http://localhost:" + port);
+//
+//        webDriver.findElement(By.className("no-items"));
+//    }
+//
+//    @Test
+//    @DirtiesContext
+//    public void searchByName() {
+//        repository.saveAll(List.of(
+//                new DictionaryEntity(0, "Первый", Collections.emptyList()),
+//                new DictionaryEntity(0, "Второй", Collections.emptyList())
+//        ));
+//
+//        webDriver.get("http://localhost:" + port);
+//        WebElement search = webDriver.findElement(By.className("validate"));
+//        search.sendKeys("Первый");
+//        search.sendKeys(Keys.ENTER);
+//
+//        var wait = new WebDriverWait(webDriver,5);
+//
+//        wait.until(ExpectedConditions.numberOfElementsToBe(
+//                By.className("collection-item"),
+//                1
+//        ));
+//
+//        assertTrue(webDriver.findElement(By.className("collection-item"))
+//        .getText().toLowerCase()
+//        .contains("первый"));
+//    }
+//
+//    @Test
+//    @DirtiesContext
+//    public void searchByNameWithLowerCase() {
+//        repository.saveAll(List.of(
+//                new DictionaryEntity(0, "Первый", Collections.emptyList()),
+//                new DictionaryEntity(0, "Второй", Collections.emptyList())
+//        ));
+//
+//        webDriver.get("http://localhost:" + port);
+//        WebElement search = webDriver.findElement(By.className("validate"));
+//        search.sendKeys("первый");
+//        search.sendKeys(Keys.ENTER);
+//
+//        var wait = new WebDriverWait(webDriver,5);
+//
+//        wait.until(ExpectedConditions.numberOfElementsToBe(
+//                By.className("collection-item"),
+//                1
+//        ));
+//
+//        assertTrue(webDriver.findElement(By.className("collection-item"))
+//                .getText().toLowerCase()
+//                .contains("первый"));
+//    }
 }
 
