@@ -7,5 +7,4 @@ import java.util.List;
 
 public interface DictionaryRepository extends JpaRepository<DictionaryEntity, Integer> {
     List<DictionaryEntity> findAllByNameIgnoreCase(String name);
-
 }

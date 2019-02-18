@@ -51,7 +51,7 @@ public class DictionaryService {
 
     public void removeWord(int id) {
         DictionaryEntity dictionaryEntity = wordRepository.findById(id)
-                .orElseThrow()
+                .orElseThrow(DictionaryNotFoundException::new)
                 .getDictionaryEntity();
         List<WordEntity> list = dictionaryEntity.getWord();
         for (int i = 0; i < list.size(); i++) {
@@ -62,33 +62,8 @@ public class DictionaryService {
         dictionaryRepository.save(dictionaryEntity);
     }
 
-
     public List<WordEntity> findWord(String word) {
 
         return wordRepository.findAllByWordIgnoreCase(word);
     }
-
-
-
-
-
-//    public void editWord(WordEntity word, int id) {
-//        DictionaryEntity dictionaryEntity = wordRepository.findById(id)
-//                .orElseThrow()
-//                .getDictionaryEntity();
-//        List<WordEntity> list = dictionaryEntity.getWord();
-//        WordEntity entity = new WordEntity();
-//        for (WordEntity entity1 : list) {
-//            if (entity1.getId() == id) {
-//                entity = entity1;
-//            }
-//        }
-//        entity.setDictionaryEntity(word.getDictionaryEntity());
-//        entity.setWord(word.getWord());
-//        entity.setTranscription(word.getTranscription());
-//        entity.setTranslation(word.getTranslation());
-//        dictionaryRepository.save(dictionaryEntity);
-//    }
-
-
 }

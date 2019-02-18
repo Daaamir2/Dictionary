@@ -96,10 +96,5 @@ public class DictionaryController {
         dictionaryService.removeById(idDictionary);
         return "redirect:/";
     }
-//    @GetMapping("/word")
-//    public String word(Model model){
-//        model.addAttribute("words", wordService.findAll());
-//        return "pages/word";
-//    }
 }
 

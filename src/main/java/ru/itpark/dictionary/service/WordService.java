@@ -41,7 +41,7 @@ public class WordService {
     public void editWord(WordEntity word, int id){
         WordEntity entity = repository
                 .findById(id)
-                .orElseThrow();
+                .orElseThrow(WordNotFoundException::new);
         entity.setWord(word.getWord());
         entity.setTranscription(word.getTranscription());
         entity.setTranslation(word.getTranslation());
