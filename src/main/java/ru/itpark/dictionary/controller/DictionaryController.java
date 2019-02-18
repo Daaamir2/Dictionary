@@ -45,10 +45,17 @@ public class DictionaryController {
     }
 
     @GetMapping(value = "/search", params = "name")
-    public String search(@RequestParam String name, Model model) {
+    public String searchDictionary(@RequestParam String name, Model model) {
         model.addAttribute("name", name);
         model.addAttribute("dictionaries", dictionaryService.findAllByName(name));
-        return "allDictionaries";
+        return "pages/allDictionariesWithoutAdd";
+    }
+
+    @GetMapping(value = "/dictionary/search", params = "word")
+    public String searchWord(@RequestParam String word, Model model) {
+        model.addAttribute("name", word);
+        model.addAttribute("words", dictionaryService.findWord(word));
+        return "pages/dictionary";
     }
 
     @GetMapping("/word/{idWord}")
@@ -60,23 +67,34 @@ public class DictionaryController {
     @PostMapping("/word/{idWord}")
     public String editWord(@PathVariable int idWord, @ModelAttribute WordEntity wordEntity) {
         int id = wordService.findById(idWord).getDictionaryEntity().getId();
-        dictionaryService.editWord(wordEntity,idWord);
+        wordService.editWord(wordEntity, idWord);
         return "redirect:/dictionary/" + id;
     }
 
     @GetMapping("/word/{idWord}/remove")
-    public String remove(@PathVariable int idWord, Model model) {
+    public String removeWord(@PathVariable int idWord, Model model) {
         model.addAttribute("word", wordService.findById(idWord));
-        return "pages/remove";
+        return "pages/removeWord";
     }
 
     @PostMapping("/word/{idWord}/remove")
-    public String remove(@PathVariable int idWord) {
+    public String removeWord(@PathVariable int idWord) {
         int id = wordService.findById(idWord).getDictionaryEntity().getId();
         dictionaryService.removeWord(idWord);
         return "redirect:/dictionary/" + id;
     }
 
+    @GetMapping("/dictionary/{idDictionary}/remove")
+    public String removeDictionary(@PathVariable int idDictionary, Model model) {
+        model.addAttribute("dictionary", dictionaryService.findById(idDictionary));
+        return "pages/removeDictionary";
+    }
+
+    @PostMapping("/dictionary/{idDictionary}/remove")
+    public String removeDictionary(@PathVariable int idDictionary) {
+        dictionaryService.removeById(idDictionary);
+        return "redirect:/";
+    }
 //    @GetMapping("/word")
 //    public String word(Model model){
 //        model.addAttribute("words", wordService.findAll());

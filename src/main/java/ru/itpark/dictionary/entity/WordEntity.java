@@ -21,7 +21,7 @@ public class WordEntity {
     private String img;
     private String reminder;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private DictionaryEntity dictionaryEntity;
 
 

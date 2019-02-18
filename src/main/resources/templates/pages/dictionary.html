@@ -7,6 +7,13 @@
     <div class="row">
         <div class="col s12">
             <h1>[[${dictionary.name}]]</h1>
+            <form data-th-action="@{/dictionary/search}">
+                <div class="input-field col s12">
+                    <input id="wordSearch" name="word" type="search" class="validate" data-th-value="${word}">
+                    <label for="wordSearch">Word</label>
+                    <button class="waves-effect waves-light btn modal-trigger" type="submit">Search</button>
+                </div>
+            </form>
             <div>
                 <table>
                     <thead>
@@ -14,6 +21,7 @@
                         <th>Word</th>
                         <th>Transcription</th>
                         <th>Translation</th>
+                        <th>Reminder</th>
                     </tr>
                     </thead>
 
@@ -26,6 +34,7 @@
                         </td>
                         <td>[[${word.transcription}]]</td>
                         <td>[[${word.translation}]]</td>
+                        <td>[[${word.reminder}]]</td>
                     </tr>
                     </tbody>
                     <form method="post">
@@ -50,6 +59,10 @@
                                     <input id="translation" name="translation" type="text" class="validate" required>
                                     <label for="translation">Translation</label>
                                 </div>
+                                <div class="input-field col s6">
+                                    <input id="reminder" name="reminder" type="text" class="validate">
+                                    <label for="reminder">Reminder</label>
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -58,6 +71,8 @@
                         </div>
                     </div>
                 </form>
+                <a class="waves-effect waves-light btn"
+                   data-th-href="@{/dictionary/{idDictionary}/remove (idDictionary = ${dictionary.id})}">Remove</a>
             </div>
         </div>
     </div>

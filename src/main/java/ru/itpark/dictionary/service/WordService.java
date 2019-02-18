@@ -26,11 +26,11 @@ public class WordService {
                 .orElseThrow(WordNotFoundException::new);
     }
 
-    public List<WordEntity> findByWord (String word){
+    public List<WordEntity> findAllByName (String word){
         return repository.findAllByWordIgnoreCase(word);
     }
 
-    public void removeById(int id){
+    public void removeWord(int id){
         repository.deleteById(id);
     }
 
@@ -38,14 +38,13 @@ public class WordService {
         repository.save(entity);
     }
 
-    public void edit(WordEntity word, int id){
+    public void editWord(WordEntity word, int id){
         WordEntity entity = repository
                 .findById(id)
                 .orElseThrow();
-        entity.setDictionaryEntity(word.getDictionaryEntity());
         entity.setWord(word.getWord());
         entity.setTranscription(word.getTranscription());
-        entity.setTranscription(word.getTranscription());
+        entity.setTranslation(word.getTranslation());
         repository.save(entity);
     }
 }

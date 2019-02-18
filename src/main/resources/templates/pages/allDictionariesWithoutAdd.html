@@ -23,25 +23,8 @@
             </ul>
             <p data-th-if="${dictionaries.size() == 0}" class="no-items">No products to display</p>
 
-            <form method="post">
-                <a class="waves-effect waves-light btn modal-trigger" href="#addDictionary">Add Dictionary</a>
+            <a class="waves-effect waves-light btn modal-trigger" data-th-href="@{/}">Return</a>
 
-                <div id="addDictionary" class="modal">
-                    <div class="modal-content">
-                        <h4>Do you want add dictionary?</h4>
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <input id="name" name="name" type="text" class="validate" required>
-                                <label for="name">Dictionary Name</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="/" class="modal-close waves-effect waves-red btn-flat">Disagree</a>
-                        <button class="modal-close waves-effect waves-green btn-flat" type="submit">Agree</button>
-                    </div>
-                </div>
-            </form>
 
             <!--<a data-th-href="@{/dictionaries/add}" class="waves-effect waves-light btn">Add Dictionary</a>-->
             <!--<a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>-->

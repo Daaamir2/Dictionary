@@ -26,8 +26,8 @@ public class DictionaryApplication {
 
 
         List<WordEntity> word = repository2.saveAll(List.of(
-                new WordEntity(0, "1", "2", "3", "4", "5",entity),
-                new WordEntity(0, "1", "2", "3", "4", "5",entity),
+                new WordEntity(0, "один", "2", "три", "4", "5",entity),
+                new WordEntity(0, "Два", "2", "Четыре", "4", "5",entity),
                 new WordEntity(0, "1", "2", "3", "4", "5",entity)
         ));
 

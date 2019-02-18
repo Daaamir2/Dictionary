@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head data-th-replace="fragments/layout :: headFragment(title='')"></head>
+<body>
+<div data-th-replace="fragments/layout :: navBar"></div>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <h1>Are you sure?</h1>
+            <form data-th-action="@{/dictionary/{idDictionary}/remove (idDictionary = ${dictionary.id})}" method="post">
+                <button class="waves-effect waves-light btn" type="submit">Remove</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
