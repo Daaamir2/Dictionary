@@ -37,15 +37,15 @@ public class DictionaryApplicationTests {
     @Autowired
     private DictionaryRepository repository;
 
-    @BeforeAll
-    public static void beforeAll() {
-        WebDriverManager.firefoxdriver().setup();
-
-        FirefoxOptions options = new FirefoxOptions();
-        options.setHeadless(true);
-
-        webDriver = new FirefoxDriver(options);
-    }
+//    @BeforeAll
+//    public static void beforeAll() {
+//        WebDriverManager.firefoxdriver().setup();
+//
+//        FirefoxOptions options = new FirefoxOptions();
+//        options.setHeadless(true);
+//
+//        webDriver = new FirefoxDriver(options);
+//    }
 
     @Test
     public void displayMainPage() {
