@@ -1,6 +1,9 @@
 language: java
 jdk: oraclejdk11
 script: mvn -e verify
+cache:
+  directories:
+    - $HOME/.m2
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 deploy:
