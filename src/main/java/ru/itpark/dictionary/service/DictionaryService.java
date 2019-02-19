@@ -49,19 +49,6 @@ public class DictionaryService {
         dictionaryRepository.save(word.getDictionaryEntity());
     }
 
-    public void removeWord(int id) {
-        DictionaryEntity dictionaryEntity = wordRepository.findById(id)
-                .orElseThrow(DictionaryNotFoundException::new)
-                .getDictionaryEntity();
-        List<WordEntity> list = dictionaryEntity.getWord();
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getId() == id) {
-                list.remove(i);
-            }
-        }
-        dictionaryRepository.save(dictionaryEntity);
-    }
-
     public List<WordEntity> findWord(String word) {
 
         return wordRepository.findAllByWordIgnoreCase(word);

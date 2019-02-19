@@ -81,7 +81,7 @@ public class DictionaryController {
     @PostMapping("/word/{idWord}/remove")
     public String removeWord(@PathVariable int idWord) {
         int id = wordService.findById(idWord).getDictionaryEntity().getId();
-        dictionaryService.removeWord(idWord);
+        wordService.removeWord(idWord);
         return "redirect:/dictionary/" + id;
     }
 

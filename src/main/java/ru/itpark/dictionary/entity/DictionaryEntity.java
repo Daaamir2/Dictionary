@@ -15,7 +15,7 @@ public class DictionaryEntity {
     @Id
     @GeneratedValue
     private int id;
-    @Column(name = "Dictionary", nullable = false)
+    @Column(nullable = false)
     private String name = "Dictionary";
     @OneToMany(cascade = CascadeType.ALL)
     private List<WordEntity> word;

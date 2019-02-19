@@ -14,7 +14,7 @@ public class WordEntity {
     @Id
     @GeneratedValue
     private int id;
-    @Column(name = "Dictionary", nullable = false)
+    @Column(nullable = false)
     private String word = "Word";
     private String transcription;
     private String translation;
