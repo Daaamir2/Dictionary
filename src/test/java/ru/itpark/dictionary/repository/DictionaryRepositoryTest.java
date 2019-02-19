@@ -11,7 +11,6 @@ import ru.itpark.dictionary.entity.DictionaryEntity;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
 public class DictionaryRepositoryTest {
@@ -26,7 +25,6 @@ public class DictionaryRepositoryTest {
         DictionaryEntity entity = new DictionaryEntity(1, "Первый", null);
         em.merge(entity);
     }
-
 
     @Test
     public void findAll() {
@@ -71,5 +69,4 @@ public class DictionaryRepositoryTest {
         repository.deleteAll();
         assertEquals(0, repository.findAll().size());
     }
-
 }

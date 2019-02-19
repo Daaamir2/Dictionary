@@ -58,6 +58,7 @@ public class WordRepositoryTest {
             assertEquals(0, actual);
         }
     }
+
     @Test
     public void add(){
         repository.save(new WordEntity(2, "Первый", "","","","",null));
@@ -69,5 +70,4 @@ public class WordRepositoryTest {
         repository.deleteAll();
         assertEquals(0, repository.findAll().size());
     }
-
 }

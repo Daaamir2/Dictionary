@@ -5,7 +5,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ru.itpark.dictionary.entity.DictionaryEntity;
 import ru.itpark.dictionary.entity.WordEntity;
 import ru.itpark.dictionary.repository.WordRepository;
 
@@ -25,7 +24,6 @@ class WordServiceTest {
 
     @InjectMocks
     private WordService service;
-
 
     @Test
     void findById() {
